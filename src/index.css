@@ -4,33 +4,35 @@
  
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 3.7% 15.9%;
+    --card-foreground: 0 0% 100%;
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 100%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 100%;
  
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+ 
+    --radius: 1rem;
   }
 }
  
@@ -45,25 +47,25 @@
 }
 
 .tablet-container {
-  @apply w-full min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-4;
+  @apply w-full min-h-screen bg-gradient-to-br from-ios-bg to-ios-bg/90 p-6;
 }
 
 .glass-panel {
-  @apply bg-black/30 backdrop-blur-sm border border-white/10 rounded-lg;
+  @apply bg-ios-card backdrop-blur-md border border-ios-border rounded-2xl;
 }
 
 .neon-border {
-  @apply border border-neon-blue/50 shadow-[0_0_15px_rgba(0,243,255,0.3)];
+  @apply border border-ios-accent/50 shadow-[0_0_15px_rgba(10,132,255,0.3)];
 }
 
 .stat-card {
-  @apply glass-panel p-4 flex flex-col gap-2;
+  @apply glass-panel p-6 flex flex-col gap-4;
 }
 
 .stat-value {
-  @apply text-2xl font-bold text-neon-blue;
+  @apply text-3xl font-semibold text-ios-text-primary;
 }
 
 .stat-label {
-  @apply text-sm text-gray-400;
+  @apply text-sm text-ios-text-secondary;
 }

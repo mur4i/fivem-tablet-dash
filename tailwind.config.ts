@@ -56,11 +56,26 @@ export default {
           blue: "#00f3ff",
           purple: "#8b5cf6",
         },
+        ios: {
+          bg: "#000000",
+          card: "rgba(28, 28, 30, 0.6)",
+          border: "rgba(255, 255, 255, 0.1)",
+          accent: "#0A84FF",
+          success: "#30D158",
+          warning: "#FFD60A",
+          danger: "#FF453A",
+          text: {
+            primary: "#FFFFFF",
+            secondary: "rgba(255, 255, 255, 0.6)",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "1rem",
+        "2xl": "1.25rem",
       },
       keyframes: {
         "accordion-down": {
@@ -80,6 +95,9 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },
