@@ -1,26 +1,31 @@
-import { Users, Shield, Terminal, Settings, Activity } from "lucide-react";
+import { Users, Shield, Terminal, Settings, Activity, Briefcase, Database, Command } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link, useLocation } from "react-router-dom";
 
 interface SidebarItemProps {
   icon: React.ElementType;
   label: string;
-  active?: boolean;
-  onClick?: () => void;
+  to: string;
 }
 
-const SidebarItem = ({ icon: Icon, label, active, onClick }: SidebarItemProps) => (
-  <button
-    onClick={onClick}
-    className={cn(
-      "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200",
-      "hover:bg-white/10",
-      active && "bg-white/10 text-neon-blue"
-    )}
-  >
-    <Icon className="w-5 h-5" />
-    <span>{label}</span>
-  </button>
-);
+const SidebarItem = ({ icon: Icon, label, to }: SidebarItemProps) => {
+  const location = useLocation();
+  const active = location.pathname === to;
+
+  return (
+    <Link
+      to={to}
+      className={cn(
+        "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200",
+        "hover:bg-white/10",
+        active && "bg-white/10 text-neon-blue"
+      )}
+    >
+      <Icon className="w-5 h-5" />
+      <span>{label}</span>
+    </Link>
+  );
+};
 
 export const AdminSidebar = () => {
   return (
@@ -31,10 +36,12 @@ export const AdminSidebar = () => {
       </div>
       
       <div className="flex flex-col gap-2">
-        <SidebarItem icon={Activity} label="Dashboard" active />
-        <SidebarItem icon={Users} label="Players" />
-        <SidebarItem icon={Terminal} label="Console" />
-        <SidebarItem icon={Settings} label="Settings" />
+        <SidebarItem icon={Activity} label="Dashboard" to="/" />
+        <SidebarItem icon={Users} label="Players" to="/players" />
+        <SidebarItem icon={Briefcase} label="Jobs" to="/jobs" />
+        <SidebarItem icon={Database} label="Resources" to="/resources" />
+        <SidebarItem icon={Command} label="Commands" to="/commands" />
+        <SidebarItem icon={Settings} label="Settings" to="/settings" />
       </div>
     </div>
   );
