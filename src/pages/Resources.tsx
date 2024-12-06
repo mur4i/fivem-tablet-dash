@@ -1,7 +1,8 @@
 import { AdminSidebar } from "@/components/AdminSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Square, RefreshCw } from "lucide-react";
+import { Play, Square, RefreshCw, ArrowUpCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const resources = [
   { id: 1, name: "es_extended", status: "running", version: "1.9.4" },
@@ -10,6 +11,16 @@ const resources = [
 ];
 
 const Resources = () => {
+  const { toast } = useToast();
+
+  const handleCheckUpdate = (resourceName: string) => {
+    // Simulating an update check
+    toast({
+      title: "Verificando atualizações",
+      description: `Procurando atualizações para ${resourceName}...`,
+    });
+  };
+
   return (
     <div className="tablet-container">
       <div className="flex gap-6">
@@ -29,7 +40,7 @@ const Resources = () => {
                   <div className="flex justify-between items-center">
                     <CardTitle>{resource.name}</CardTitle>
                     <span className={`px-2 py-1 rounded-full text-xs ${
-                      resource.status === "running" ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500"
+                      resource.status === "running" ? "bg-ios-success/20 text-ios-success" : "bg-ios-danger/20 text-ios-danger"
                     }`}>
                       {resource.status}
                     </span>
@@ -37,7 +48,7 @@ const Resources = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <p className="text-sm text-gray-400">Version: {resource.version}</p>
+                    <p className="text-sm text-ios-text-secondary">Version: {resource.version}</p>
                     <div className="flex gap-2">
                       {resource.status === "stopped" ? (
                         <Button size="sm" variant="outline">
@@ -53,6 +64,14 @@ const Resources = () => {
                       <Button size="sm" variant="outline">
                         <RefreshCw className="w-4 h-4 mr-2" />
                         Restart
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => handleCheckUpdate(resource.name)}
+                      >
+                        <ArrowUpCircle className="w-4 h-4 mr-2" />
+                        Check Update
                       </Button>
                     </div>
                   </div>
